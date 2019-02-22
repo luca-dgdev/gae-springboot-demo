@@ -2,8 +2,6 @@
 
 <https://dzone.com/articles/gcp-a-spring-boot-guide-for-the-busy-dev>
 
-
-
 1. - Create project using command 
 `curl https://start.spring.io/starter.zip -d dependencies=web -o gae-springboot-demo.zip`
 

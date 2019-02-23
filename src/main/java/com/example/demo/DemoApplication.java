@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import java.util.Calendar;
+import java.util.logging.Logger;
 
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -14,27 +15,26 @@ import org.springframework.scheduling.annotation.Scheduled;
 @EnableScheduling
 public class DemoApplication {
 
+	private static final Logger log = Logger.getLogger(DemoApplication.class.getName());
+
 	@Bean
-	ApplicationRunner appRunner()
-	{
+	ApplicationRunner appRunner() {
 		return new AppRunner();
 	}
-	
+
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
 	}
-	
-	private static class AppRunner implements ApplicationRunner
-	{
+
+	private static class AppRunner implements ApplicationRunner {
 		@Override
 		public void run(ApplicationArguments args) throws Exception {
-			System.out.println("INIT RUNNER");
-			
+			log.info("INIT RUNNER");
 		}
 	}
-	
+
 	@Scheduled(initialDelay = 1000, fixedRate = 10000)
 	public void run() {
-	    System.out.println("Current time is :: " + Calendar.getInstance().getTime());
+		log.info("Current time is :: " + Calendar.getInstance().getTime());
 	}
 }

@@ -29,12 +29,12 @@ public class DemoApplication {
 	private static class AppRunner implements ApplicationRunner {
 		@Override
 		public void run(ApplicationArguments args) throws Exception {
-			log.info("INIT RUNNER");
+			log.severe("INIT RUNNER");
 		}
 	}
 
 	@Scheduled(initialDelay = 1000, fixedRate = 10000)
 	public void run() {
-		log.info("Current time is :: " + Calendar.getInstance().getTime());
+		log.severe("Current time is :: " + Calendar.getInstance().getTime());
 	}
 }

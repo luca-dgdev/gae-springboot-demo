@@ -39,7 +39,7 @@ public class DemoApplication {
 		}
 	}
 
-	@Scheduled(initialDelay = 1000, fixedRate = 10000)
+	@Scheduled(initialDelay = 1000, fixedRate = 1800000)
 	public void run() {
 		log.severe("Current time is :: " + Calendar.getInstance().getTime());
 		

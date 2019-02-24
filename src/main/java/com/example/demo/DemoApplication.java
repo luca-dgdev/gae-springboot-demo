@@ -3,6 +3,7 @@ package com.example.demo;
 import java.util.Calendar;
 import java.util.logging.Logger;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
@@ -11,11 +12,16 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
+import com.example.demo.service.SendEmailService;
+
 @SpringBootApplication
 @EnableScheduling
 public class DemoApplication {
 
 	private static final Logger log = Logger.getLogger(DemoApplication.class.getName());
+	
+	@Autowired
+	private SendEmailService sendEmailService;
 
 	@Bean
 	ApplicationRunner appRunner() {
@@ -36,5 +42,7 @@ public class DemoApplication {
 	@Scheduled(initialDelay = 1000, fixedRate = 10000)
 	public void run() {
 		log.severe("Current time is :: " + Calendar.getInstance().getTime());
+		
+		sendEmailService.sendEmail("Test email schedulazione");
 	}
 }
